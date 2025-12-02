@@ -33,22 +33,24 @@ export const PublicLayout = ({ children }: PublicLayoutProps) => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b border-border py-4">
-        <div className="container mx-auto px-4">
+      <header className="border-b border-border/50 backdrop-blur-sm bg-background/80 sticky top-0 z-50 shadow-sm">
+        <div className="container mx-auto px-6 py-6">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold">{siteName}</h1>
-            <nav className="flex gap-6">
-              <a href="/" className="hover:text-primary transition-colors">
+            <h1 className="text-3xl font-serif font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              {siteName}
+            </h1>
+            <nav className="flex gap-8">
+              <a href="/" className="text-foreground/70 hover:text-primary transition-all duration-300 font-medium">
                 Home
               </a>
-              <a href="/about" className="hover:text-primary transition-colors">
+              <a href="/about" className="text-foreground/70 hover:text-primary transition-all duration-300 font-medium">
                 About
               </a>
             </nav>
           </div>
         </div>
       </header>
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-6 py-12">
         {children}
       </main>
     </div>

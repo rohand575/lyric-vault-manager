@@ -29,21 +29,24 @@ const Home = () => {
 
   return (
     <PublicLayout>
-      <div className="max-w-3xl mx-auto">
-        <h2 className="text-2xl mb-6">
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-3xl font-serif mb-8 text-center">
           Click any of the following song titles to see full lyrics
         </h2>
-        <div className="space-y-2">
+        <div className="space-y-3">
           {songs.length === 0 ? (
-            <p className="text-muted-foreground">No songs available yet.</p>
+            <p className="text-muted-foreground text-center">No songs available yet.</p>
           ) : (
-            songs.map((song) => (
+            songs.map((song, index) => (
               <a
                 key={song.id}
                 href={`/songs/${song.id}`}
-                className="block p-4 rounded-lg border border-border hover:bg-secondary hover:border-primary transition-colors"
+                className="block p-6 rounded-xl border-2 border-border/50 bg-card/50 backdrop-blur-sm hover:bg-card hover:border-primary/40 hover:shadow-lg transition-all duration-300 group"
+                style={{ animationDelay: `${index * 50}ms` }}
               >
-                {song.title}
+                <span className="text-lg font-medium group-hover:text-primary transition-colors duration-300">
+                  {song.title}
+                </span>
               </a>
             ))
           )}

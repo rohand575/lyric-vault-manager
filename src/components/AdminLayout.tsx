@@ -18,12 +18,14 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b border-border py-4 bg-secondary">
-        <div className="container mx-auto px-4">
-          <h1 className="text-2xl font-bold">Administration Panel</h1>
+      <header className="border-b border-border/50 backdrop-blur-sm bg-secondary/30 shadow-sm">
+        <div className="container mx-auto px-6 py-6">
+          <h1 className="text-3xl font-serif font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            Administration Panel
+          </h1>
         </div>
       </header>
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-6 py-12">
         {children}
       </main>
     </div>
