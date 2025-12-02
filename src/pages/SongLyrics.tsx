@@ -57,15 +57,19 @@ const SongLyrics = () => {
 
   return (
     <PublicLayout>
-      <div className="max-w-3xl mx-auto">
-        <h2 className="text-3xl font-bold mb-6">{song.title}</h2>
-        <div className="whitespace-pre-wrap text-lg mb-8 leading-relaxed">
-          {song.lyrics || 'No lyrics available.'}
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-4xl font-serif font-bold mb-8 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          {song.title}
+        </h2>
+        <div className="bg-card/30 backdrop-blur-sm rounded-2xl border-2 border-border/50 p-8 md:p-12 mb-8 shadow-lg">
+          <div className="whitespace-pre-wrap text-lg leading-relaxed text-foreground/90">
+            {song.lyrics || 'No lyrics available.'}
+          </div>
         </div>
         <Button 
           onClick={() => navigate('/')}
           size="lg"
-          className="w-full sm:w-auto"
+          className="w-full sm:w-auto shadow-lg"
         >
           Return to Home Page
         </Button>

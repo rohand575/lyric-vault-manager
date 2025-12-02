@@ -110,33 +110,39 @@ const AdminDashboard = () => {
 
   return (
     <AdminLayout>
-      <div className="max-w-4xl mx-auto space-y-8">
-        <section className="border border-border rounded-lg p-6">
-          <h2 className="text-xl font-semibold mb-4">Website Name</h2>
+      <div className="max-w-5xl mx-auto space-y-8">
+        <section className="bg-card/30 backdrop-blur-sm border-2 border-border/50 rounded-2xl p-8 shadow-lg">
+          <h2 className="text-2xl font-serif font-semibold mb-6">Website Name</h2>
           <div className="space-y-4">
             <Input
               value={siteName}
               onChange={(e) => setSiteName(e.target.value)}
               placeholder="Enter website name"
+              className="h-12 border-2"
             />
-            <Button onClick={saveSiteName}>Save</Button>
+            <Button onClick={saveSiteName} size="lg" className="shadow-md">
+              Save
+            </Button>
           </div>
         </section>
 
-        <section className="border border-border rounded-lg p-6">
-          <h2 className="text-xl font-semibold mb-4">Song Titles (up to 50)</h2>
-          <div className="space-y-2">
+        <section className="bg-card/30 backdrop-blur-sm border-2 border-border/50 rounded-2xl p-8 shadow-lg">
+          <h2 className="text-2xl font-serif font-semibold mb-6">Song Titles (up to 50)</h2>
+          <div className="space-y-3 max-h-[600px] overflow-y-auto pr-2">
             {Array.from({ length: 50 }).map((_, i) => {
               const song = songs[i];
               return (
-                <div key={i} className="flex gap-2">
+                <div key={i} className="flex gap-3">
                   <Input
                     id={`song-${i}`}
                     defaultValue={song?.title || ''}
                     placeholder={`Song ${i + 1}`}
+                    className="flex-1 border-2"
                   />
                   <Button 
                     onClick={() => song ? editLyrics(song.id) : handleNewSong(i)}
+                    variant={song ? "default" : "outline"}
+                    className="shadow-sm"
                   >
                     Edit Lyrics
                   </Button>
@@ -146,29 +152,38 @@ const AdminDashboard = () => {
           </div>
         </section>
 
-        <section className="border border-border rounded-lg p-6">
-          <h2 className="text-xl font-semibold mb-4">Add Viewer Password</h2>
-          <div className="flex gap-2">
+        <section className="bg-card/30 backdrop-blur-sm border-2 border-border/50 rounded-2xl p-8 shadow-lg">
+          <h2 className="text-2xl font-serif font-semibold mb-6">Add Viewer Password</h2>
+          <div className="flex gap-3 mb-6">
             <Input
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
               placeholder="New password"
+              className="flex-1 h-12 border-2"
             />
-            <Button onClick={addPassword}>Add</Button>
+            <Button onClick={addPassword} size="lg" className="shadow-md">
+              Add
+            </Button>
           </div>
           <Button 
             variant="outline" 
-            className="mt-4"
             onClick={() => navigate('/admin/passwords')}
+            className="shadow-sm"
           >
             See Passwords
           </Button>
         </section>
 
-        <div className="flex gap-4">
-          <Button onClick={() => navigate('/admin/passwords')}>Passwords</Button>
-          <Button onClick={() => navigate('/admin/analytics')}>Analytics</Button>
-          <Button onClick={() => navigate('/admin/about')}>About Text</Button>
+        <div className="flex flex-wrap gap-4">
+          <Button onClick={() => navigate('/admin/passwords')} variant="outline" size="lg" className="shadow-sm">
+            Passwords
+          </Button>
+          <Button onClick={() => navigate('/admin/analytics')} variant="outline" size="lg" className="shadow-sm">
+            Analytics
+          </Button>
+          <Button onClick={() => navigate('/admin/about')} variant="outline" size="lg" className="shadow-sm">
+            About Text
+          </Button>
         </div>
       </div>
     </AdminLayout>

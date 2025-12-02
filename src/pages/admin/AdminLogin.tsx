@@ -36,30 +36,40 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="w-full max-w-md px-4">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold mb-4">Administrator Login</h1>
-          <p className="text-muted-foreground">
-            To reach administrator page enter password & press Enter
-          </p>
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/30 flex items-center justify-center p-6">
+      <div className="max-w-md w-full">
+        <div className="bg-card/50 backdrop-blur-sm rounded-2xl shadow-xl border-2 border-border/50 p-10 space-y-8">
+          <div className="text-center space-y-3">
+            <h1 className="text-4xl font-serif font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Administrator
+            </h1>
+            <p className="text-muted-foreground text-lg">
+              To reach administrator page enter password & press Enter
+            </p>
+          </div>
+          
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <Input
+                type="password"
+                placeholder="Enter admin password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full h-12 text-base bg-background/50 border-2"
+                disabled={loading}
+              />
+            </div>
+            
+            <Button 
+              type="submit" 
+              className="w-full shadow-lg" 
+              size="lg"
+              disabled={loading}
+            >
+              {loading ? 'Entering...' : 'Enter'}
+            </Button>
+          </form>
         </div>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <Input
-            type="password"
-            placeholder="Enter admin password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="h-12"
-          />
-          <Button 
-            type="submit" 
-            className="w-full h-12 text-lg"
-            disabled={loading}
-          >
-            Enter
-          </Button>
-        </form>
       </div>
     </div>
   );
